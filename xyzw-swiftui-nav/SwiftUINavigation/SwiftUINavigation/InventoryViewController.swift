@@ -12,7 +12,7 @@ extension ItemRowViewModel: Hashable {
   }
 }
 
-class InventoryViewController: UIViewController {
+class InventoryViewController: UIViewController, UICollectionViewDelegate {
   let viewModel: InventoryViewModel
   private var cancellables: Set<AnyCancellable> = []
 
@@ -45,23 +45,51 @@ class InventoryViewController: UIViewController {
     >.init { [unowned self] cell, indexPath, itemRowViewModel in
       cell.bind(viewModel: itemRowViewModel, context: self)
     }
+
+    var dataSource: UICollectionViewDiffableDataSource<Section, ItemRowViewModel>!
+
+    var layoutConfig = UICollectionLayoutListConfiguration.init(appearance: .insetGrouped)
+    layoutConfig.trailingSwipeActionsConfigurationProvider = { indexPath in
+      guard let viewModel = dataSource.itemIdentifier(for: indexPath)
+      else { return nil }
+
+      let duplicate = UIContextualAction(
+        style: .normal,
+        title: "Duplicate") { _, _, completion in
+          viewModel.duplicateButtonTapped()
+          completion(true)
+        }
+      duplicate.backgroundColor = .darkGray
+
+      let delete = UIContextualAction(
+        style: .destructive,
+        title: "Delete") { _, _, completion in
+          viewModel.deleteButtonTapped()
+          completion(true)
+        }
+
+      return UISwipeActionsConfiguration(actions: [delete, duplicate])
+    }
     
     let collectionView = UICollectionView(
       frame: .zero,
-      collectionViewLayout: UICollectionViewCompositionalLayout.list(using: .init(appearance: .insetGrouped))
+      collectionViewLayout: UICollectionViewCompositionalLayout.list(using: layoutConfig)
     )
     collectionView.translatesAutoresizingMaskIntoConstraints = false
 
-    let dataSource = UICollectionViewDiffableDataSource<Section, ItemRowViewModel>(
+    dataSource = UICollectionViewDiffableDataSource<Section, ItemRowViewModel>(
       collectionView: collectionView
     ) { collectionView, indexPath, itemRowViewModel in
-      collectionView.dequeueConfiguredReusableCell(
+      let cell = collectionView.dequeueConfiguredReusableCell(
         using: cellRegistration,
         for: indexPath,
         item: itemRowViewModel
       )
+      cell.accessories = [.disclosureIndicator()]
+      return cell
     }
     collectionView.dataSource = dataSource
+    collectionView.delegate = self
     
     self.view.addSubview(collectionView)
     NSLayoutConstraint.activate([
@@ -90,6 +118,7 @@ class InventoryViewController: UIViewController {
         switch route {
         case .none:
           presentedViewController?.dismiss(animated: true)
+          presentedViewController = nil
           break
 
         case let .add(itemViewModel):
@@ -120,6 +149,13 @@ class InventoryViewController: UIViewController {
 
     // MARK: UI actions
 
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath
+  ) {
+    self.viewModel.inventory[indexPath.row].setEditNavigation(isActive: true)
   }
 }
 
