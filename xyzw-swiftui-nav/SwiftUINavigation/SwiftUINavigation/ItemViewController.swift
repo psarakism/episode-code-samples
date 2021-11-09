@@ -31,6 +31,8 @@ class ItemViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     super.viewDidLoad()
     
     // MARK: View creation
+
+    self.view.backgroundColor = .white
     
     let nameTextField = UITextField()
     nameTextField.placeholder = "Name"
