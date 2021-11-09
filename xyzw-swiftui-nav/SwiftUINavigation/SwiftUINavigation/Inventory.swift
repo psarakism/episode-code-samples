@@ -162,7 +162,12 @@ struct InventoryView: View {
     .navigationTitle("Inventory")
     .sheet(item: self.$viewModel.route.case(/InventoryViewModel.Route.add)) { itemToAdd in
       NavigationView {
-        ItemView(viewModel: itemToAdd)
+        ToSwiftUI(
+          viewController: {
+            ItemViewController(viewModel: itemToAdd)
+          }
+        )
+//        ItemView(viewModel: itemToAdd)
           .navigationTitle("Add")
           .toolbar {
             ToolbarItem(placement: .cancellationAction) {

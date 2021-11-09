@@ -90,7 +90,12 @@ struct ItemRowView: View {
       case: /ItemRowViewModel.Route.edit,
       onNavigate: self.viewModel.setEditNavigation(isActive:),
       destination: { $itemViewModel in
-        ItemView(viewModel: itemViewModel)
+        ToSwiftUI(
+          viewController: {
+            ItemViewController(viewModel: itemViewModel)
+          }
+        )
+//        ItemView(viewModel: itemViewModel)
           .navigationBarTitle("Edit")
           .navigationBarBackButtonHidden(true)
           .toolbar {
@@ -162,7 +167,12 @@ struct ItemRowView: View {
         item: self.$viewModel.route.case(/ItemRowViewModel.Route.duplicate)
       ) { itemViewModel in
         NavigationView {
-          ItemView(viewModel: itemViewModel)
+//          ItemView(viewModel: itemViewModel)
+          ToSwiftUI(
+            viewController: {
+              ItemViewController(viewModel: itemViewModel)
+            }
+          )
             .navigationBarTitle("Duplicate")
             .toolbar {
               ToolbarItem(placement: .cancellationAction) {
