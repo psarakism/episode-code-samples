@@ -19,6 +19,7 @@
 		2AF10F1E26F3D4A000796207 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF10F1D26F3D4A000796207 /* ItemRow.swift */; };
 		4B3057AD26F3BD7900A5C737 /* CasePaths in Frameworks */ = {isa = PBXBuildFile; productRef = 4B3057AC26F3BD7900A5C737 /* CasePaths */; };
 		4B99CC66273ADA8A0000B0F2 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B99CC65273ADA8A0000B0F2 /* ItemViewController.swift */; };
+		4B99CC68273B070A0000B0F2 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B99CC67273B070A0000B0F2 /* ContentViewController.swift */; };
 		4BCC55AC272C572F0032BF7A /* Parsing in Frameworks */ = {isa = PBXBuildFile; productRef = 4BCC55AB272C572F0032BF7A /* Parsing */; };
 		4BDDD1F426EF9CB00032CB71 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDD1F326EF9CB00032CB71 /* Inventory.swift */; };
 		4BDDD1F626EFB0D00032CB71 /* SwiftUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDD1F526EFB0D00032CB71 /* SwiftUIHelpers.swift */; };
@@ -47,6 +48,7 @@
 		2AF10F1B26F3B56B00796207 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		2AF10F1D26F3D4A000796207 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		4B99CC65273ADA8A0000B0F2 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		4B99CC67273B070A0000B0F2 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		4BCC55A9272C53D80032BF7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BDDD1F326EF9CB00032CB71 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		4BDDD1F526EFB0D00032CB71 /* SwiftUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHelpers.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				4BCC55A9272C53D80032BF7A /* Info.plist */,
 				2A3A7B8C26EF940C00A37A4D /* ContentView.swift */,
+				4B99CC67273B070A0000B0F2 /* ContentViewController.swift */,
 				4BDDD1F326EF9CB00032CB71 /* Inventory.swift */,
 				2A6C8B26273AF1A400D544E7 /* InventoryViewController.swift */,
 				2AF10F1D26F3D4A000796207 /* ItemRow.swift */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B99CC68273B070A0000B0F2 /* ContentViewController.swift in Sources */,
 				4B99CC66273ADA8A0000B0F2 /* ItemViewController.swift in Sources */,
 				2A6C8B27273AF1A400D544E7 /* InventoryViewController.swift in Sources */,
 				4BDDD1F426EF9CB00032CB71 /* Inventory.swift in Sources */,
